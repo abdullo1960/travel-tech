@@ -1,0 +1,221 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio</title>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+/* Portfolio Section */
+.portfolio {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2em 0;
+}
+
+.portfolio-header {
+    margin-bottom: 2em;
+    background-color: #000;
+    color: #fff;
+    padding: 1em 0;
+}
+
+.portfolio-header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;
+}
+
+.portfolio-item {
+    background: #fff;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 500px;
+    gap: 20px;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+
+.portfolio-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+.portfolio-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #000;
+}
+
+.portfolio-item p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.cta {
+    margin-top: 2em;
+    background: #333;
+    color: #fff;
+    padding: 1.5em 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.cta p {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.cta button {
+    padding: 0.8em 2em;
+    font-size: 1em;
+    border: none;
+    background: #ff6600;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cta button:hover {
+    background: #cc5200;
+}
+    </style>
+    
+    <header class="container">
+        <nav class="navbar">
+            <div class="logo"><img src="{% static 'img/a06d5a84b61d27bbd48bfe0a0bacf222-removebg-preview.png' %}" alt=""></div>
+            <ul class="nav-links">
+                <li><a href="{% url 'travel:home' %}">{% blocktrans %}Home{% endblocktrans %}</a></li>
+                <li><a href="#service">{% blocktrans %}Services{% endblocktrans %}</a></li>
+                <li><a href="#about">{% blocktrans %}About Us{% endblocktrans %}</a></li>
+                <li><a href="#business ">{% blocktrans %}Our Business{% endblocktrans %}</a></li>
+                <li><a href="#blog">{% blocktrans %}Blog{% endblocktrans %}</a></li>
+                <li><a href="#whoarewe">{% blocktrans %}Who are we?{% endblocktrans %}</a></li>
+            </ul>
+            <form style="margin-top: -5px; margin-left: 20px; " action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <select class="language" name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+                <input class="language" type="submit" value="Go">
+            </form>
+            <a href="tel:+998994473245" class="contact-btn">+998-99-447-32-45</a>
+        </nav>
+    </header>
+    
+    <section class="portfolio">
+        <div style= "margin-left: 200px; width: 960px; padding: 150px; border-radius: 20px;" class="portfolio-header">
+            <h1>Our Portfolio</h1>
+        </div>
+        <div class="portfolio-grid">
+            <div style=" margin-left: 200px; gap: 50px;">
+                <div class="portfolio-item">
+                    <img src="{% static 'img/Rectangle 20.png' %}" alt="Web UI Design">
+                    <h3>Web UI design</h3>
+                    <p>Creative UI design</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="{% static 'img/Rectangle 22.png' %}" alt="Graphic Design">
+                    <h3>Graphic design</h3>
+                    <p>Graphic design</p>
+                </div>
+            </div>
+            <div style=" margin-left: 200px;">
+                <div class="portfolio-item">
+                    <img src="{% static 'img/Rectangle 21.png' %}" alt="Digital Strategy">
+                    <h3>To design Digital Strategy</h3>
+                    <p>Social Media Marketing</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="{% static 'img/Rectangle 23.png' %}" alt="Graphic Design">
+                    <h3>Graphic design</h3>
+                    <p>Graphic design</p>
+                </div>
+            </div>
+            <div style="margin-top: 872px; display: flex; margin-left: -750px;">
+                <div class="portfolio-item">
+                    <img src="{% static 'img/Rectangle 22 (1).png' %}" alt="UI Design">
+                    <h3>UI Design</h3>
+                    <p>Creative branding for logo</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="{% static 'img/Rectangle 23 (1).png' %}" alt="UI Design">
+                    <h3>UI Design</h3>
+                    <p>Creative branding for logo</p>
+                </div>
+            </div>
+        </div>
+        <div class="cta">
+            <p>Enough talk, let’s get to work</p>
+            <button>Get in touch</button>
+        </div>
+    </section>
+
+    
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="https://www.figma.com/file/CDoK9IWURbONoOUcwFx1eT/image/9a385d95495b22bd3fb84759863b9f595c67b9f8" alt="Company Logo">
+                    <p>{% blocktrans %}Award-Winning Travel Solutions | <br> Empowering Businesses with Innovation{% endblocktrans %}</p>
+                    <div class="social-icons">
+                        <a href="#"><img src="{% static 'img/E.svg' %}" alt="Facebook"></a>
+                        <a href="#"><img src="{% static 'img/D.svg' %}" alt="Twitter"></a>
+                        <a href="#"><img src="{% static 'img/Q.svg' %}" alt="Instagram"></a>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                <div class="footer-links">
+                    <div class="contact">
+                        <h4>{% blocktrans %}Contact{% endblocktrans %}</h4>
+                        <ul>
+                            <li><a  href="#about">{% blocktrans %}About Us{% endblocktrans %}</a></li>
+                            <li><a href="#service">{% blocktrans %}Service{% endblocktrans %}</a></li>
+                            <li><a href="#profile">{% blocktrans %}Profile{% endblocktrans %}</a></li>
+                            <li><a href="#whoarewe">{% blocktrans %}Who are we{% endblocktrans %}</a></li>
+                        </ul>
+                    </div>
+                    <div class="legals">
+                        <h4>{% blocktrans %}Legals{% endblocktrans %}</h4>
+                        <ul>
+                            <li><a href="#">{% blocktrans %}Privacy{% endblocktrans %}</a></li>
+                            <li><a href="#">{% blocktrans %}Disclaimer{% endblocktrans %}</a></li>
+                            <li><a href="#">{% blocktrans %}Terms{% endblocktrans %}</a></li>
+                            <li><a href="#">{% blocktrans %}Company{% endblocktrans %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
