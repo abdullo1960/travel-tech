@@ -31,6 +31,92 @@ color: #fff;
   cursor: pointer;
   font-size: 16px;
 }
+.blog-section {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.blog-section h2 {
+    font-size: 28px;
+    color: #0c1e3c;
+    margin-bottom: 20px;
+}
+
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-card {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.blog-content h3 {
+    font-size: 18px;
+    color: #0c1e3c;
+    margin-bottom: 10px;
+}
+
+.blog-content p {
+    font-size: 14px;
+    color: #5a5a5a;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    text-decoration: none;
+    font-weight: bold;
+    color: #f4511e;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .blog-container {
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 300px) {
+.footer-logo{
+  margin-left: -0px;
+}
+}
   </style>
   
   
@@ -232,32 +318,36 @@ color: #fff;
 </section>
 
 <section class="blog-section">
-  <h2>{% blocktrans %}Latest From Blog{% endblocktrans %}</h2>
-  <div class="blog-cards">
+  <h2>Latest From Blog</h2>
+  <div style="background: #ffffff;" class="blog-container">
+
       <div class="blog-card">
-          <img src="{% static 'img/1EC32BFF-A43A-40F3-85EF-BDDAE063ECD8.png' %}" alt="Blog 1">
-          <div class="blog-card-content">
-              <h3>{% blocktrans %}Build prototypes with thousands of components.{% endblocktrans %}</h3>
-              <p>{% blocktrans %}Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches.{% endblocktrans %}</p>
-              <a href="#">{% blocktrans %}Read more{% endblocktrans %}</a>
+          <img src="{% static 'img/1EC32BFF-A43A-40F3-85EF-BDDAE063ECD8.png' %}" alt="People discussing">
+          <div class="blog-content">
+              <h3>Build prototypes with thousands of components.</h3>
+              <p>Leverage agile frameworks to provide a robust synopsis for high-level overviews. Iterative approaches.</p>
+              <a href="#" class="read-more">Read more</a>
           </div>
       </div>
+
       <div class="blog-card">
-          <img src="{% static 'img/1EC32BFF-A43A-40F3-85EF-BDDAE063ECD8 (1).png' %}" alt="Blog 2">
-          <div class="blog-card-content">
-              <h3>{% blocktrans %}Build prototypes with thousands of components.{% endblocktrans %}</h3>
-              <p>{% blocktrans %}Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches.{% endblocktrans %}</p>
-              <a href="#">{% blocktrans %}Read more{% endblocktrans %}</a>
+          <img src="{% static 'img/1EC32BFF-A43A-40F3-85EF-BDDAE063ECD8 (1).png' %}" alt="Team meeting">
+          <div class="blog-content">
+              <h3>Build prototypes with thousands of components.</h3>
+              <p>Leverage agile frameworks to provide a robust synopsis for high-level overviews. Iterative approaches.</p>
+              <a href="#" class="read-more">Read more</a>
           </div>
       </div>
+
       <div class="blog-card">
-          <img src="{% static 'img/1EC32BFF-A43A-40F3-85EF-BDDAE063ECD8 (2).png' %}" alt="Blog 3">
-          <div class="blog-card-content">
-              <h3>{% blocktrans %}Build prototypes with thousands of components.{% endblocktrans %}</h3>
-              <p>{% blocktrans %}Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches.{% endblocktrans %}</p>
-              <a href="#">{% blocktrans %}Read more{% endblocktrans %}</a>
+          <img src="{% static 'img/1EC32BFF-A43A-40F3-85EF-BDDAE063ECD8 (2).png' %}" alt="Office discussion">
+          <div class="blog-content">
+              <h3>Build prototypes with thousands of components.</h3>
+              <p>Leverage agile frameworks to provide a robust synopsis for high-level overviews. Iterative approaches.</p>
+              <a href="#" class="read-more">Read more</a>
           </div>
       </div>
+
   </div>
 </section>
 
